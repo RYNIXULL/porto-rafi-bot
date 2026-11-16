@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #02040a;
+  color: #f1f5f9;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #02040a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #14224f;
+  border-radius: 4px;
+  border: 1px solid rgba(44, 103, 237, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2c67ed;
+  box-shadow: 0 0 10px rgba(44, 103, 237, 0.8);
+}
+
+/* Cosmic glows & glassmorphism */
+.glass-panel {
+  background: rgba(8, 14, 34, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(44, 103, 237, 0.2);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel-hover:hover {
+  border-color: rgba(44, 103, 237, 0.5);
+  box-shadow: 0 0 25px rgba(44, 103, 237, 0.3);
+  transform: translateY(-2px);
+}
+
+.glow-blue {
+  box-shadow: 0 0 20px rgba(44, 103, 237, 0.45);
+}
+
+.text-gradient-cosmic {
+  background: linear-gradient(135deg, #ffffff 10%, #7aa8ff 50%, #2c67ed 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-cyan {
+  background: linear-gradient(135deg, #38bdf8 0%, #2c67ed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.border-glow-cosmic {
+  border: 1px solid rgba(44, 103, 237, 0.35);
+  box-shadow: 0 0 15px rgba(44, 103, 237, 0.25);
+}
+
+/* Star twinkling & meteor keyframes */
+@keyframes meteor {
+  0% {
+    transform: rotate(215deg) translateX(0);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(215deg) translateX(-1000px);
+    opacity: 0;
+  }
+}
+
