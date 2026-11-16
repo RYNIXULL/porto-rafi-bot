@@ -9,12 +9,9 @@ import {
   FolderCheck,
   GitCommit,
   ShieldCheck,
-  Target,
   User,
   Code2,
   Trophy,
-  Sparkles,
-  Compass,
 } from "lucide-react";
 import {
   personalData,
@@ -138,15 +135,11 @@ export default function About() {
           <div className="clay-card p-6 sm:p-7 relative overflow-hidden group">
             <span className="specular-sweep" aria-hidden="true" />
             <div className="flex items-center justify-between gap-2">
-              <h4 className="font-heading text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white flex items-center gap-2.5 tracking-tight">
-                <span className="w-9 h-9 clay-icon-box flex items-center justify-center">
-                  <Target className="w-4 h-4 text-sky-600 dark:text-sky-400" aria-hidden="true" />
-                </span>
-                <span>Visi &amp; Filosofi Kerja</span>
+              <h4 className="font-heading text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                Visi &amp; Filosofi Kerja
               </h4>
-              <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-sky-50 dark:bg-sky-950/60 border border-sky-200 dark:border-sky-800 text-[10px] font-mono text-sky-700 dark:text-sky-300 font-semibold">
-                <Sparkles className="w-3 h-3 text-amber-500 animate-pulse" />
-                <span>Core Values</span>
+              <span className="px-2.5 py-0.5 rounded-full bg-sky-50 dark:bg-sky-950/60 border border-sky-200 dark:border-sky-800 text-[10px] font-mono text-sky-700 dark:text-sky-300 font-semibold">
+                Core Values
               </span>
             </div>
 
@@ -156,30 +149,27 @@ export default function About() {
 
             {/* 3 Core Pillars */}
             <div className="mt-5 pt-4 border-t border-slate-200/80 dark:border-slate-700/70 grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <div className="p-3 rounded-2xl bg-sky-50/70 dark:bg-slate-800/50 border border-sky-100 dark:border-slate-700/60 flex flex-col gap-1">
-                <div className="flex items-center gap-1.5 text-xs font-bold text-sky-700 dark:text-sky-300 font-mono">
-                  <Code2 className="w-3.5 h-3.5" />
-                  <span>Clean Architecture</span>
+              <div className="p-3.5 rounded-2xl bg-sky-50/70 dark:bg-slate-800/50 border border-sky-100 dark:border-slate-700/60 flex flex-col gap-1">
+                <div className="text-xs font-bold text-sky-700 dark:text-sky-300 font-mono">
+                  <span className="text-sky-500 mr-1.5">01.</span>Clean Architecture
                 </div>
                 <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-snug">
                   Kode modular, terstruktur rapi, dan mudah di-maintain.
                 </p>
               </div>
 
-              <div className="p-3 rounded-2xl bg-sky-50/70 dark:bg-slate-800/50 border border-sky-100 dark:border-slate-700/60 flex flex-col gap-1">
-                <div className="flex items-center gap-1.5 text-xs font-bold text-sky-700 dark:text-sky-300 font-mono">
-                  <Compass className="w-3.5 h-3.5" />
-                  <span>Rapid Adaptability</span>
+              <div className="p-3.5 rounded-2xl bg-sky-50/70 dark:bg-slate-800/50 border border-sky-100 dark:border-slate-700/60 flex flex-col gap-1">
+                <div className="text-xs font-bold text-sky-700 dark:text-sky-300 font-mono">
+                  <span className="text-sky-500 mr-1.5">02.</span>Rapid Adaptability
                 </div>
                 <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-snug">
                   Selalu adaptif mengeksplorasi ekosistem web &amp; tren AI.
                 </p>
               </div>
 
-              <div className="p-3 rounded-2xl bg-sky-50/70 dark:bg-slate-800/50 border border-sky-100 dark:border-slate-700/60 flex flex-col gap-1">
-                <div className="flex items-center gap-1.5 text-xs font-bold text-sky-700 dark:text-sky-300 font-mono">
-                  <ShieldCheck className="w-3.5 h-3.5" />
-                  <span>User Impact</span>
+              <div className="p-3.5 rounded-2xl bg-sky-50/70 dark:bg-slate-800/50 border border-sky-100 dark:border-slate-700/60 flex flex-col gap-1">
+                <div className="text-xs font-bold text-sky-700 dark:text-sky-300 font-mono">
+                  <span className="text-sky-500 mr-1.5">03.</span>User Impact
                 </div>
                 <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-snug">
                   Performa responsif dengan empati mendalam pada pengguna.
