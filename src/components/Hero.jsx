@@ -90,13 +90,9 @@ export default function Hero() {
             <span>{personalData.status}</span>
           </div>
 
-          {/* Greeting with Streamline Waving Hand SVG */}
-          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 font-semibold tracking-wide flex items-center gap-2.5">
-            <span>Halo semua</span>
-            <span className="keep-light inline-flex items-center justify-center w-7 h-7 rounded-xl bg-sky-50 border border-white shadow-sm">
-              <img src={wavingHandIcon} alt="" className="w-4 h-4" aria-hidden="true" />
-            </span>
-            <span>Saya</span>
+          {/* Clean Greeting */}
+          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 font-semibold tracking-wide flex items-center gap-2">
+            <span>Halo, perkenalkan saya</span>
           </p>
 
           {/* Display Name */}
@@ -199,62 +195,130 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* Right Column: Tactile Clay + Liquid Glass Orbital Core */}
+        {/* Right Column: Interactive Developer Code Hub */}
         <motion.div
           className="lg:col-span-5 flex justify-center items-center relative"
           initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.94 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 flex items-center justify-center">
-            {/* Outer Orbit Ring */}
+          <div className="relative w-full max-w-md flex items-center justify-center py-6">
+            {/* Subtle background ambient glow */}
+            <div className="absolute w-64 h-64 rounded-full bg-sky-400/20 dark:bg-sky-500/15 blur-3xl -z-10 pointer-events-none" />
+
+            {/* Subtle Ambient Orbit Ring */}
             <motion.div
               animate={shouldReduceMotion ? undefined : { rotate: 360 }}
-              transition={{ duration: 38, repeat: Infinity, ease: "linear" }}
-              className="absolute inset-0 rounded-full border-2 border-dashed border-sky-400/45 dark:border-sky-400/30"
+              transition={{ duration: 42, repeat: Infinity, ease: "linear" }}
+              className="absolute -inset-4 rounded-full border border-dashed border-sky-300/40 dark:border-sky-500/20 pointer-events-none"
             >
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-9 h-9 clay-icon-box flex items-center justify-center">
-                <Code2 className="w-4 h-4" aria-hidden="true" />
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-7 h-7 clay-icon-box flex items-center justify-center">
+                <Code2 className="w-3.5 h-3.5 text-sky-500" aria-hidden="true" />
               </div>
-              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-9 h-9 clay-icon-box flex items-center justify-center">
-                <Terminal className="w-4 h-4" aria-hidden="true" />
+              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-7 h-7 clay-icon-box flex items-center justify-center">
+                <Terminal className="w-3.5 h-3.5 text-sky-500" aria-hidden="true" />
               </div>
             </motion.div>
 
-            {/* Inner Orbit Ring */}
+            {/* Central Modern Developer Code Terminal */}
             <motion.div
-              animate={shouldReduceMotion ? undefined : { rotate: -360 }}
-              transition={{ duration: 26, repeat: Infinity, ease: "linear" }}
-              className="absolute inset-9 sm:inset-11 rounded-full border border-sky-300/60 dark:border-sky-500/25"
+              whileHover={shouldReduceMotion ? undefined : { y: -4, scale: 1.01 }}
+              transition={{ duration: 0.3 }}
+              className="w-full clay-card rounded-3xl overflow-hidden border-2 border-white/90 dark:border-slate-700/80 shadow-2xl relative z-10"
             >
-              <div className="absolute top-1/2 -left-4 -translate-y-1/2 w-8 h-8 clay-icon-box flex items-center justify-center">
-                <Cpu className="w-3.5 h-3.5" aria-hidden="true" />
+              {/* Terminal Window Header Bar */}
+              <div className="px-4 py-3 bg-gradient-to-r from-sky-50/90 via-white to-sky-100/80 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 border-b border-sky-100 dark:border-slate-700/70 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <span className="w-3 h-3 rounded-full bg-rose-400/90 shadow-sm" />
+                  <span className="w-3 h-3 rounded-full bg-amber-400/90 shadow-sm" />
+                  <span className="w-3 h-3 rounded-full bg-emerald-400/90 shadow-sm" />
+                  <span className="ml-2 text-xs font-mono font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
+                    <Code2 className="w-3.5 h-3.5 text-sky-500" />
+                    <span>rafi.config.ts</span>
+                  </span>
+                </div>
+                <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-[10px] font-mono font-medium text-emerald-600 dark:text-emerald-400">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <span>v2.6 • Active</span>
+                </div>
               </div>
-              <div className="absolute top-1/2 -right-4 -translate-y-1/2 w-8 h-8 clay-icon-box flex items-center justify-center">
-                <Globe className="w-3.5 h-3.5" aria-hidden="true" />
+
+              {/* Code Snippet Editor Body */}
+              <div className="p-5 font-mono text-xs sm:text-[13px] leading-relaxed bg-white/95 dark:bg-slate-950/90 text-slate-800 dark:text-slate-200 overflow-x-auto select-none">
+                <div className="flex items-start gap-3">
+                  <span className="text-slate-400/70 select-none text-right w-4 shrink-0">1</span>
+                  <p className="text-slate-400 dark:text-slate-500 italic">
+                    // 🚀 Passionate Junior Web Developer
+                  </p>
+                </div>
+
+                <div className="flex items-start gap-3 mt-1">
+                  <span className="text-slate-400/70 select-none text-right w-4 shrink-0">2</span>
+                  <p>
+                    <span className="text-purple-600 dark:text-purple-400 font-semibold">const</span>{" "}
+                    <span className="text-sky-600 dark:text-sky-300 font-semibold">developer</span>{" "}
+                    <span className="text-slate-500 dark:text-slate-400">=</span>{" "}
+                    <span className="text-slate-600 dark:text-slate-300">&#123;</span>
+                  </p>
+                </div>
+
+                <div className="flex items-start gap-3 mt-1 pl-4">
+                  <span className="text-slate-400/70 select-none text-right w-4 shrink-0">3</span>
+                  <p>
+                    <span className="text-slate-600 dark:text-slate-400">name:</span>{" "}
+                    <span className="text-emerald-600 dark:text-emerald-400 font-medium">
+                      &quot;Rafi Diandra Ardi Agusta&quot;</span>,
+                  </p>
+                </div>
+
+                <div className="flex items-start gap-3 mt-1 pl-4">
+                  <span className="text-slate-400/70 select-none text-right w-4 shrink-0">4</span>
+                  <p>
+                    <span className="text-slate-600 dark:text-slate-400">role:</span>{" "}
+                    <span className="text-emerald-600 dark:text-emerald-400 font-medium">
+                      &quot;Junior Developer&quot;</span>,
+                  </p>
+                </div>
+
+                <div className="flex items-start gap-3 mt-1 pl-4">
+                  <span className="text-slate-400/70 select-none text-right w-4 shrink-0">5</span>
+                  <p>
+                    <span className="text-slate-600 dark:text-slate-400">stack:</span>{" "}
+                    <span className="text-slate-500 dark:text-slate-300">[</span>
+                    <span className="text-amber-600 dark:text-amber-300">&quot;React&quot;</span>,{" "}
+                    <span className="text-amber-600 dark:text-amber-300">&quot;Tailwind&quot;</span>,{" "}
+                    <span className="text-amber-600 dark:text-amber-300">&quot;AI&quot;</span>
+                    <span className="text-slate-500 dark:text-slate-300">]</span>,
+                  </p>
+                </div>
+
+                <div className="flex items-start gap-3 mt-1 pl-4">
+                  <span className="text-slate-400/70 select-none text-right w-4 shrink-0">6</span>
+                  <p>
+                    <span className="text-slate-600 dark:text-slate-400">readyForHire:</span>{" "}
+                    <span className="text-sky-600 dark:text-sky-400 font-bold">true</span>
+                  </p>
+                </div>
+
+                <div className="flex items-start gap-3 mt-1">
+                  <span className="text-slate-400/70 select-none text-right w-4 shrink-0">7</span>
+                  <p className="text-slate-600 dark:text-slate-300">&#125;;</p>
+                </div>
+
+                {/* Mini interactive prompt line */}
+                <div className="flex items-center gap-3 mt-3 pt-3 border-t border-slate-100 dark:border-slate-800/80 text-[11px] text-slate-500 dark:text-slate-400">
+                  <span className="text-sky-500 font-bold">&gt;</span>
+                  <span>ready to build modern web solutions</span>
+                  <span className="w-1.5 h-3.5 bg-sky-500 animate-pulse ml-0.5" />
+                </div>
               </div>
             </motion.div>
-
-            {/* Center Tactile Glass Core */}
-            <div className="relative w-44 h-44 sm:w-52 sm:h-52 clay-card rounded-full p-2 flex items-center justify-center overflow-hidden">
-              <div className="w-full h-full rounded-full bg-gradient-to-br from-sky-50 via-white to-sky-100 dark:from-slate-900 dark:via-slate-800 dark:to-sky-950/60 flex flex-col items-center justify-center p-4 text-center border border-white/80 dark:border-slate-700/80">
-                <div className="keep-light w-14 h-14 rounded-2xl bg-white shadow-sm border border-sky-100 flex items-center justify-center mb-2.5">
-                  <img src={desktopCodeIcon} alt="" className="w-8 h-8" aria-hidden="true" />
-                </div>
-                <span className="text-xs font-mono font-bold tracking-wider text-sky-700 dark:text-sky-300">
-                  ASTRO.CODE
-                </span>
-                <span className="text-[11px] text-slate-500 dark:text-slate-400 font-mono mt-0.5">
-                  ONLINE • READY
-                </span>
-              </div>
-            </div>
 
             {/* Floating Info Badge Top-Right */}
             <motion.div
               animate={shouldReduceMotion ? undefined : { y: [-5, 5, -5] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-3 -right-2 sm:right-0 px-3.5 py-2.5 clay-card rounded-2xl flex items-center gap-2.5"
+              className="absolute -top-3 -right-2 sm:-right-4 px-3.5 py-2.5 clay-card rounded-2xl flex items-center gap-2.5 shadow-lg z-20"
             >
               <div className="keep-light w-8 h-8 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center shrink-0">
                 <img src={galaxyIcon} alt="" className="w-4 h-4" aria-hidden="true" />
@@ -273,7 +337,7 @@ export default function Hero() {
             <motion.div
               animate={shouldReduceMotion ? undefined : { y: [5, -5, 5] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-              className="absolute -bottom-4 -left-2 sm:left-0 px-3.5 py-2.5 clay-card rounded-2xl flex items-center gap-2.5"
+              className="absolute -bottom-3 -left-2 sm:-left-4 px-3.5 py-2.5 clay-card rounded-2xl flex items-center gap-2.5 shadow-lg z-20"
             >
               <div className="keep-light w-8 h-8 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center shrink-0">
                 <img src={layersIcon} alt="" className="w-4 h-4" aria-hidden="true" />
