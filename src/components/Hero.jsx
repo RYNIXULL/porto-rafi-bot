@@ -89,11 +89,11 @@ export default function Hero() {
 
           {/* Clean Greeting */}
           <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 font-semibold tracking-wide flex items-center gap-2">
-            <span>Halo, perkenalkan saya</span>
+            <span>Hi, I'm</span>
           </p>
 
           {/* Display Name */}
-          <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-bold tracking-tight mt-2.5 text-slate-900 dark:text-white leading-[1.08]">
+          <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-extrabold tracking-tighter mt-2.5 text-slate-900 dark:text-white leading-[1.04]">
             <span className="block">{personalData.name.split(" ")[0]}</span>
             <span className="text-gradient-sky">
               {personalData.name.split(" ").slice(1).join(" ")}
@@ -131,7 +131,7 @@ export default function Hero() {
               className="group min-h-[48px] px-6 py-3 clay-btn-primary text-sm flex items-center gap-2.5 cursor-pointer"
             >
               <Layers className="w-4 h-4" aria-hidden="true" />
-              <span>Jelajahi Portfolio</span>
+              <span>Explore Portfolio</span>
               <ArrowRight
                 className="w-4 h-4 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1"
                 aria-hidden="true"
@@ -143,14 +143,14 @@ export default function Hero() {
               onClick={scrollToContact}
               className="min-h-[48px] px-6 py-3 clay-btn-secondary text-sm flex items-center gap-2 cursor-pointer"
             >
-              <span>Hubungi Saya</span>
+              <span>Contact Me</span>
             </button>
 
             <button
               type="button"
               onClick={() => setResumeOpen(true)}
-              aria-label="Lihat dan Unduh Curriculum Vitae"
-              title="Lihat & Unduh Curriculum Vitae (CV)"
+              aria-label="View and Download Curriculum Vitae"
+              title="View & Download Curriculum Vitae (CV)"
               className="min-h-[48px] px-4 py-3 clay-btn-secondary text-sm flex items-center gap-2 cursor-pointer"
             >
               <FileText className="w-4 h-4 text-sky-600 dark:text-sky-400" aria-hidden="true" />
@@ -161,32 +161,32 @@ export default function Hero() {
           {/* Key Highlights Row */}
           <div className="mt-10 pt-6 border-t border-slate-200/80 dark:border-slate-700/70 grid grid-cols-3 gap-4 sm:gap-8 w-full max-w-lg">
             <div>
-              <div className="font-heading text-2xl sm:text-3xl font-bold text-slate-800 dark:text-white flex items-center justify-center lg:justify-start">
+              <div className="font-heading text-2xl sm:text-3xl font-extrabold text-slate-800 dark:text-white flex items-center justify-center lg:justify-start">
                 <span>{projectsData.length}</span>
                 <span className="text-sky-600 dark:text-sky-400 ml-0.5">
                   {projectsData.length > 1 ? "+" : ""}
                 </span>
               </div>
               <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5 font-medium">
-                Proyek Selesai
+                Projects Completed
               </p>
             </div>
             <div>
-              <div className="font-heading text-2xl sm:text-3xl font-bold text-slate-800 dark:text-white flex items-center justify-center lg:justify-start">
+              <div className="font-heading text-2xl sm:text-3xl font-extrabold text-slate-800 dark:text-white flex items-center justify-center lg:justify-start">
                 <span>{certificatesData.length}</span>
                 <span className="text-sky-600 dark:text-sky-400 ml-0.5">+</span>
               </div>
               <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5 font-medium">
-                Sertifikasi
+                Certifications
               </p>
             </div>
             <div>
-              <div className="font-heading text-2xl sm:text-3xl font-bold text-slate-800 dark:text-white flex items-center justify-center lg:justify-start">
+              <div className="font-heading text-2xl sm:text-3xl font-extrabold text-slate-800 dark:text-white flex items-center justify-center lg:justify-start">
                 <span>100</span>
                 <span className="text-sky-600 dark:text-sky-400 ml-0.5">%</span>
               </div>
               <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5 font-medium">
-                Dedikasi Belajar
+                Learning Dedication
               </p>
             </div>
           </div>

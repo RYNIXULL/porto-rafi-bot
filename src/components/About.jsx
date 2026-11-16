@@ -13,6 +13,8 @@ import {
   User,
   Code2,
   Trophy,
+  Sparkles,
+  Compass,
 } from "lucide-react";
 import {
   personalData,
@@ -39,8 +41,8 @@ export default function About() {
           <span>EXPLORING MY BACKGROUND</span>
         </div>
 
-        <h2 className="font-heading text-3xl sm:text-5xl font-bold text-slate-900 dark:text-white tracking-tight">
-          Tentang <span className="text-gradient-sky">Diri Saya</span>
+        <h2 className="font-heading text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tighter">
+          Tentang <span className="text-gradient-sky">Diri Saya.</span>
         </h2>
 
         <p className="mt-4 text-slate-600 dark:text-slate-300 text-sm sm:text-base max-w-2xl leading-relaxed">
@@ -132,18 +134,58 @@ export default function About() {
           transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           className="lg:col-span-7 flex flex-col justify-between gap-6"
         >
-          {/* Vision Card */}
+          {/* Vision & Work Philosophy Card */}
           <div className="clay-card p-6 sm:p-7 relative overflow-hidden group">
             <span className="specular-sweep" aria-hidden="true" />
-            <h4 className="font-heading text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2.5">
-              <span className="w-9 h-9 clay-icon-box flex items-center justify-center">
-                <Target className="w-4 h-4" aria-hidden="true" />
+            <div className="flex items-center justify-between gap-2">
+              <h4 className="font-heading text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white flex items-center gap-2.5 tracking-tight">
+                <span className="w-9 h-9 clay-icon-box flex items-center justify-center">
+                  <Target className="w-4 h-4 text-sky-600 dark:text-sky-400" aria-hidden="true" />
+                </span>
+                <span>Visi &amp; Filosofi Kerja</span>
+              </h4>
+              <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-sky-50 dark:bg-sky-950/60 border border-sky-200 dark:border-sky-800 text-[10px] font-mono text-sky-700 dark:text-sky-300 font-semibold">
+                <Sparkles className="w-3 h-3 text-amber-500 animate-pulse" />
+                <span>Core Values</span>
               </span>
-              <span>Visi &amp; Filosofi Kerja</span>
-            </h4>
-            <p className="mt-3 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-              Sebagai junior developer, saya memandang setiap baris kode sebagai pondasi sistem yang kokoh. Saya senantiasa mengadopsi teknologi terbaru, berdisiplin tinggi dalam penulisan kode bersih (clean code), dan haus belajar hal-hal baru untuk memecahkan masalah nyata.
+            </div>
+
+            <p className="mt-3.5 text-sm sm:text-base text-slate-700 dark:text-slate-200 leading-relaxed font-medium">
+              &quot;Menyatukan logika rekayasa perangkat lunak yang presisi dengan estetika visual yang memikat. Kode bukan sekadar instruksi mesin, melainkan instrumen untuk menghadirkan solusi nyata yang cepat, intuitif, dan bermakna.&quot;
             </p>
+
+            {/* 3 Core Pillars */}
+            <div className="mt-5 pt-4 border-t border-slate-200/80 dark:border-slate-700/70 grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div className="p-3 rounded-2xl bg-sky-50/70 dark:bg-slate-800/50 border border-sky-100 dark:border-slate-700/60 flex flex-col gap-1">
+                <div className="flex items-center gap-1.5 text-xs font-bold text-sky-700 dark:text-sky-300 font-mono">
+                  <Code2 className="w-3.5 h-3.5" />
+                  <span>Clean Architecture</span>
+                </div>
+                <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-snug">
+                  Kode modular, terstruktur rapi, dan mudah di-maintain.
+                </p>
+              </div>
+
+              <div className="p-3 rounded-2xl bg-sky-50/70 dark:bg-slate-800/50 border border-sky-100 dark:border-slate-700/60 flex flex-col gap-1">
+                <div className="flex items-center gap-1.5 text-xs font-bold text-sky-700 dark:text-sky-300 font-mono">
+                  <Compass className="w-3.5 h-3.5" />
+                  <span>Rapid Adaptability</span>
+                </div>
+                <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-snug">
+                  Selalu adaptif mengeksplorasi ekosistem web &amp; tren AI.
+                </p>
+              </div>
+
+              <div className="p-3 rounded-2xl bg-sky-50/70 dark:bg-slate-800/50 border border-sky-100 dark:border-slate-700/60 flex flex-col gap-1">
+                <div className="flex items-center gap-1.5 text-xs font-bold text-sky-700 dark:text-sky-300 font-mono">
+                  <ShieldCheck className="w-3.5 h-3.5" />
+                  <span>User Impact</span>
+                </div>
+                <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-snug">
+                  Performa responsif dengan empati mendalam pada pengguna.
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* 4 Key Statistics Cards */}
@@ -193,8 +235,8 @@ export default function About() {
             <GraduationCap className="w-4 h-4 text-sky-600 dark:text-sky-400" aria-hidden="true" />
             <span>Riwayat Pendidikan (Education)</span>
           </div>
-          <h3 className="font-heading text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mt-3">
-            Latar Belakang Akademis
+          <h3 className="font-heading text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tighter mt-3">
+            Latar Belakang <span className="text-gradient-sky">Akademis.</span>
           </h3>
         </div>
 

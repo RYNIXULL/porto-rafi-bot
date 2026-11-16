@@ -91,8 +91,8 @@ export default function Contact() {
           <span>TRANSMIT SIGNAL</span>
         </div>
 
-        <h2 className="font-heading text-3xl sm:text-5xl font-bold text-slate-900 dark:text-white tracking-tight">
-          Hubungi <span className="text-gradient-sky">Saya</span>
+        <h2 className="font-heading text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tighter">
+          Hubungi <span className="text-gradient-sky">Saya.</span>
         </h2>
 
         <p className="mt-4 text-slate-600 dark:text-slate-300 text-sm sm:text-base max-w-2xl leading-relaxed">

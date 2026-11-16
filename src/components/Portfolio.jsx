@@ -88,8 +88,8 @@ export default function Portfolio() {
           <span>PORTFOLIO &amp; SKILLS EXHIBIT</span>
         </div>
 
-        <h2 className="font-heading text-3xl sm:text-5xl font-bold text-slate-900 dark:text-white tracking-tight">
-          Karya &amp; <span className="text-gradient-sky">Kompetensi</span>
+        <h2 className="font-heading text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tighter">
+          Karya &amp; <span className="text-gradient-sky">Kompetensi.</span>
         </h2>
 
         <p className="mt-4 text-slate-600 dark:text-slate-300 text-sm sm:text-base max-w-2xl leading-relaxed">

@@ -7,40 +7,33 @@ export const personalData = {
     "Frontend Explorer",
     "Creative Problem Solver"
   ],
-  bio: "Mahasiswa Program Studi Manajemen Informatika di Politeknik Negeri Lampung sekaligus junior web developer yang bersemangat menjelajahi jagat teknologi web modern. Memadukan estetika desain futuristik dengan kode yang bersih, responsif, dan berperforma tinggi. Siap meluncur bersama tantangan baru dan berkolaborasi dalam proyek inovatif.",
-  status: "Tersedia untuk Magang & Pekerjaan Full-time",
-  email: "rafidiandra@example.com",
+  bio: "Informatics Management student at Politeknik Negeri Lampung and an aspiring junior web developer passionate about exploring modern web technologies. Blending futuristic design aesthetics with clean, performant, and scalable code — eager to tackle new challenges and build impactful digital experiences.",
+  status: "Available for Internship & Full-time Roles",
+  email: "rafidiandra57@gmail.com",
   location: "Lampung, Indonesia",
   resumeUrl: "#",
   avatarUrl: "/profile.jpg",
   socials: [
     {
       name: "GitHub",
-      url: "https://github.com",
+      url: "https://github.com/rafidiandra57-cmd",
       icon: "Github",
       color: "#f1f5f9",
-      username: "@rafidiandra"
+      username: "@rafidiandra57-cmd"
     },
     {
       name: "LinkedIn",
-      url: "https://linkedin.com",
+      url: "https://linkedin.com/in/rafidiandra",
       icon: "Linkedin",
       color: "#0a66c2",
       username: "in/rafidiandra"
     },
     {
       name: "Instagram",
-      url: "https://instagram.com",
+      url: "https://instagram.com/rafi.diandraa",
       icon: "Instagram",
       color: "#e1306c",
-      username: "@rafidiandra"
-    },
-    {
-      name: "Discord",
-      url: "https://discord.com",
-      icon: "MessageSquare",
-      color: "#5865F2",
-      username: "rafi_astro#4412"
+      username: "@rafi.diandraa"
     }
   ]
 };
@@ -61,10 +54,10 @@ export const educationData = [
   {
     period: "2021 - 2024",
     institution: "SMA Muhammadiyah Gisting",
-    degree: "Sekolah Menengah Atas (MIPA)",
+    degree: "Sekolah Menengah Atas (IPS)",
     location: "Gisting, Tanggamus, Lampung",
     gpa: "Lulusan 2024",
-    description: "Menyelesaikan pendidikan menengah atas dengan minat mendalam pada bidang matematika, sains, dan komputasi dasar.",
+    description: "Menyelesaikan pendidikan menengah atas jurusan IPS dengan ketertarikan mendalam pada teknologi informasi, ekonomi digital, dan komputasi modern.",
     achievements: [
       "Aktif dalam kegiatan akademik dan kepengurusan organisasi sekolah"
     ]
