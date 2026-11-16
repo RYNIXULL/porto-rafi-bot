@@ -1,7 +1,7 @@
 import React from "react";
 import { ArrowUp, Code2 } from "lucide-react";
 import { personalData } from "../data/portfolioData";
-import brandCodeIcon from "../assets/icons/File-Code-1--Streamline-Core.svg";
+import rapibotLogo from "../assets/icons/RAPIBOT.svg";
 
 export default function Footer() {
   const scrollToTop = () => {
@@ -15,8 +15,8 @@ export default function Footer() {
           {/* Logo & Summary */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left">
             <div className="flex items-center gap-2.5">
-              <div className="keep-light w-9 h-9 rounded-2xl bg-gradient-to-br from-sky-50 to-sky-100 border border-white shadow-sm flex items-center justify-center">
-                <img src={brandCodeIcon} alt="" className="w-4 h-4" aria-hidden="true" />
+              <div className="keep-light w-9 h-9 rounded-2xl bg-gradient-to-br from-white to-sky-50 border border-white shadow-sm flex items-center justify-center p-1.5">
+                <img src={rapibotLogo} alt="" className="w-full h-full object-contain" aria-hidden="true" />
               </div>
               <span className="font-heading font-bold text-base text-slate-900 dark:text-white tracking-tight">
                 RAFI<span className="text-sky-600 dark:text-sky-400">.DEV</span>

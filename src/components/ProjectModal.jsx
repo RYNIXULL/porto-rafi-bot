@@ -141,15 +141,17 @@ export default function ProjectModal({ project, isOpen, onClose }) {
                     <span>Lihat Demo Live</span>
                   </a>
 
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="min-h-[44px] px-5 py-2.5 rounded-2xl clay-btn-secondary text-xs sm:text-sm flex items-center gap-2 cursor-pointer"
-                  >
-                    <Github className="w-4 h-4" aria-hidden="true" />
-                    <span>Repository GitHub</span>
-                  </a>
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="min-h-[44px] px-5 py-2.5 rounded-2xl clay-btn-secondary text-xs sm:text-sm flex items-center gap-2 cursor-pointer"
+                    >
+                      <Github className="w-4 h-4" aria-hidden="true" />
+                      <span>Repository GitHub</span>
+                    </a>
+                  )}
                 </div>
 
                 <button

@@ -3,16 +3,13 @@ import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowRight,
   FileText,
-  Code2,
-  Terminal,
-  Cpu,
-  Globe,
   ChevronDown,
   Layers,
 } from "lucide-react";
 import { personalData, certificatesData, projectsData } from "../data/portfolioData";
+import { useTheme } from "../context/ThemeContext";
+import { BlackHoleHeroSection } from "@/components/ui/blackhole-hero-section";
 import ResumeModal from "./ResumeModal";
-import RotatingGalaxy from "./RotatingGalaxy";
 
 export default function Hero() {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
@@ -21,6 +18,8 @@ export default function Hero() {
   const [typingSpeed, setTypingSpeed] = useState(110);
   const [resumeOpen, setResumeOpen] = useState(false);
   const shouldReduceMotion = useReducedMotion();
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
 
   useEffect(() => {
     if (shouldReduceMotion) {
@@ -70,10 +69,10 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen flex items-center justify-center pt-28 pb-20 md:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center z-10">
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-6 items-center z-10">
         {/* Left Column: Intro & Value Proposition */}
         <motion.div
-          className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left"
+          className="lg:col-span-6 flex flex-col items-center lg:items-start text-center lg:text-left"
           initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
@@ -192,93 +191,68 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* Right Column: Tactile Clay + Liquid Glass Orbital Core with Rafi's Portrait */}
+        {/* Right Column: Interactive 3D Schwarzschild Black Hole */}
         <motion.div
-          className="lg:col-span-5 flex justify-center items-center relative"
-          initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.94 }}
+          className="lg:col-span-6 flex justify-center items-center relative"
+          initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.88 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.9, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="relative w-72 h-72 sm:w-84 sm:h-84 md:w-96 md:h-96 flex items-center justify-center">
-            {/* Subtle background ambient glow */}
-            <div className="absolute w-72 h-72 rounded-full bg-sky-400/20 dark:bg-sky-500/15 blur-3xl -z-10 pointer-events-none" />
-
-            {/* Outer Orbit Ring with Lucide icons */}
+          <motion.div
+            animate={
+              shouldReduceMotion
+                ? undefined
+                : {
+                    y: [-8, 8, -8],
+                  }
+            }
+            transition={{
+              duration: 7,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="relative w-full max-w-[360px] sm:max-w-[490px] md:max-w-[540px] lg:max-w-[600px] xl:max-w-[640px] aspect-square flex items-center justify-center cursor-grab active:cursor-grabbing"
+          >
+            {/* Soft Ambient Halo Behind the Black Hole */}
             <motion.div
-              animate={shouldReduceMotion ? undefined : { rotate: 360 }}
-              transition={{ duration: 38, repeat: Infinity, ease: "linear" }}
-              className="absolute inset-0 rounded-full border-2 border-dashed border-sky-400/40 dark:border-sky-400/25 pointer-events-none"
-            >
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-9 h-9 clay-icon-box flex items-center justify-center shadow-md">
-                <Code2 className="w-4 h-4 text-sky-600 dark:text-sky-400" aria-hidden="true" />
-              </div>
-              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-9 h-9 clay-icon-box flex items-center justify-center shadow-md">
-                <Terminal className="w-4 h-4 text-sky-600 dark:text-sky-400" aria-hidden="true" />
-              </div>
-            </motion.div>
+              aria-hidden="true"
+              animate={
+                shouldReduceMotion
+                  ? undefined
+                  : {
+                      scale: [0.92, 1.08, 0.92],
+                      opacity: [0.35, 0.65, 0.35],
+                    }
+              }
+              transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute inset-8 rounded-full bg-sky-400/25 dark:bg-sky-500/25 blur-3xl -z-10 pointer-events-none"
+            />
 
-            {/* Inner Orbit Ring */}
-            <motion.div
-              animate={shouldReduceMotion ? undefined : { rotate: -360 }}
-              transition={{ duration: 26, repeat: Infinity, ease: "linear" }}
-              className="absolute inset-9 sm:inset-11 rounded-full border border-sky-300/50 dark:border-sky-500/20 pointer-events-none"
-            >
-              <div className="absolute top-1/2 -left-4 -translate-y-1/2 w-8 h-8 clay-icon-box flex items-center justify-center shadow-sm">
-                <Cpu className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400" aria-hidden="true" />
-              </div>
-              <div className="absolute top-1/2 -right-4 -translate-y-1/2 w-8 h-8 clay-icon-box flex items-center justify-center shadow-sm">
-                <Globe className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400" aria-hidden="true" />
-              </div>
-            </motion.div>
-
-            {/* Center Rotating Cosmic Galaxy Core */}
-            <motion.div
-              initial={shouldReduceMotion ? false : { scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="relative z-10 flex items-center justify-center"
-            >
-              <RotatingGalaxy size={224} />
-            </motion.div>
-
-            {/* Floating Info Badge Top-Right */}
-            <motion.div
-              animate={shouldReduceMotion ? undefined : { y: [-5, 5, -5] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-3 -right-2 sm:-right-4 px-3.5 py-2.5 clay-card rounded-2xl flex items-center gap-2.5 shadow-lg z-20"
-            >
-              <div className="w-7 h-7 rounded-xl bg-sky-100 dark:bg-sky-950/80 border border-sky-200 dark:border-sky-800 flex items-center justify-center shrink-0">
-                <Code2 className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400" aria-hidden="true" />
-              </div>
-              <div className="text-left">
-                <p className="text-xs font-bold text-slate-800 dark:text-slate-100 leading-tight">
-                  Clean Architecture
-                </p>
-                <p className="text-[10px] text-slate-500 dark:text-slate-400 font-mono">
-                  Best Practices
-                </p>
-              </div>
-            </motion.div>
-
-            {/* Floating Info Badge Bottom-Left */}
-            <motion.div
-              animate={shouldReduceMotion ? undefined : { y: [5, -5, 5] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-              className="absolute -bottom-3 -left-2 sm:-left-4 px-3.5 py-2.5 clay-card rounded-2xl flex items-center gap-2.5 shadow-lg z-20"
-            >
-              <div className="w-7 h-7 rounded-xl bg-emerald-100 dark:bg-emerald-950/80 border border-emerald-200 dark:border-emerald-800 flex items-center justify-center shrink-0">
-                <Layers className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
-              </div>
-              <div className="text-left">
-                <p className="text-xs font-bold text-slate-800 dark:text-slate-100 leading-tight">
-                  React &amp; Tailwind
-                </p>
-                <p className="text-[10px] text-slate-500 dark:text-slate-400 font-mono">
-                  Liquid Glass UI
-                </p>
-              </div>
-            </motion.div>
-          </div>
+            <BlackHoleHeroSection
+              transparent
+              interactive3D
+              focus={[0.5, 0.5]}
+              scrim="none"
+              vignette={0}
+              distance={17.5}
+              elevation={-11}
+              orbitSpeed={3.5}
+              roll={-16}
+              fov={50}
+              spinSpeed={0.16}
+              grain={0.56}
+              doppler={0.55}
+              starBrightness={0}
+              hotColor={isDark ? "#F0F9FF" : "#BAE6FD"}
+              midColor={isDark ? "#38BDF8" : "#0284C7"}
+              coolColor={isDark ? "#1D4ED8" : "#0F172A"}
+              brightness={isDark ? 1.2 : 1.35}
+              glow={isDark ? 1.25 : 0.95}
+              exposure={isDark ? 0.98 : 1.08}
+              steps={230}
+              resolution={0.78}
+            />
+          </motion.div>
         </motion.div>
       </div>
 

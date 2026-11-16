@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight, Home, User, FolderGit2, Mail } from "lucide-react";
 import LiquidNavbar, { NimbusIcons } from "./LiquidNavbar";
 import { ThemeToggle, useTheme } from "../context/ThemeContext";
-import brandCodeIcon from "../assets/icons/File-Code-1--Streamline-Core.svg";
+import rapibotLogo from "../assets/icons/RAPIBOT.svg";
 
 const SECTIONS = ["home", "about", "portfolio", "contact"];
 
@@ -81,8 +81,8 @@ export default function Navbar() {
             onClick={(e) => scrollToSection(e, "#home")}
             className="shrink-0 flex items-center gap-2.5 group cursor-pointer rounded-full pr-1"
           >
-            <div className="keep-light w-10 h-10 rounded-2xl bg-gradient-to-br from-sky-50 to-sky-100 border-2 border-white shadow-[0_6px_16px_-4px_rgba(14,165,233,0.28)] flex items-center justify-center transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105 group-hover:-rotate-3">
-              <img src={brandCodeIcon} alt="" className="w-5 h-5" aria-hidden="true" />
+            <div className="keep-light w-10 h-10 rounded-2xl bg-gradient-to-br from-white to-sky-50 border-2 border-white shadow-[0_6px_16px_-4px_rgba(14,165,233,0.28)] flex items-center justify-center p-1.5 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105 group-hover:-rotate-3">
+              <img src={rapibotLogo} alt="" className="w-full h-full object-contain" aria-hidden="true" />
             </div>
             <div className="flex flex-col leading-none">
               <span className="font-heading font-bold text-sm sm:text-base tracking-tight text-slate-800 dark:text-slate-100 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">

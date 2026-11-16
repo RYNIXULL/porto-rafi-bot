@@ -17,6 +17,8 @@ import {
   Wrench,
   FileText,
   PlusCircle,
+  Clock,
+  Database,
 } from "lucide-react";
 import {
   projectsData,
@@ -267,16 +269,18 @@ export default function Portfolio() {
                         </button>
 
                         <div className="flex items-center gap-2">
-                          <a
-                            href={project.githubUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={`Lihat source code ${project.title} di GitHub`}
-                            title="Lihat Source Code"
-                            className="w-10 h-10 rounded-xl clay-btn-secondary flex items-center justify-center cursor-pointer"
-                          >
-                            <Github className="w-4 h-4" aria-hidden="true" />
-                          </a>
+                          {project.githubUrl && (
+                            <a
+                              href={project.githubUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label={`Lihat source code ${project.title} di GitHub`}
+                              title="Lihat Source Code"
+                              className="w-10 h-10 rounded-xl clay-btn-secondary flex items-center justify-center cursor-pointer"
+                            >
+                              <Github className="w-4 h-4" aria-hidden="true" />
+                            </a>
+                          )}
                           <a
                             href={project.demoUrl}
                             target="_blank"
@@ -337,12 +341,16 @@ export default function Portfolio() {
                     <div className="w-12 h-12 clay-icon-box flex items-center justify-center transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-rotate-6 group-hover:scale-110">
                       {cert.icon === "Code" ? (
                         <Code className="w-6 h-6" aria-hidden="true" />
+                      ) : cert.icon === "Cpu" ? (
+                        <Cpu className="w-6 h-6" aria-hidden="true" />
+                      ) : cert.icon === "Database" ? (
+                        <Database className="w-6 h-6" aria-hidden="true" />
                       ) : (
                         <Award className="w-6 h-6" aria-hidden="true" />
                       )}
                     </div>
                     <span className="clay-badge px-3 py-1 text-[10px] font-mono">
-                      ID: {cert.credentialId.slice(0, 10)}...
+                      ID: {cert.credentialId.length > 16 ? `${cert.credentialId.slice(0, 12)}...` : cert.credentialId}
                     </span>
                   </div>
 
@@ -353,11 +361,24 @@ export default function Portfolio() {
                   <p className="text-xs font-semibold text-sky-600 dark:text-sky-400 mt-1.5 flex items-center gap-1.5">
                     <span>{cert.issuer}</span>
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" aria-hidden="true" />
+                    {cert.courseCode && (
+                      <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400">
+                        • {cert.courseCode}
+                      </span>
+                    )}
                   </p>
 
-                  <div className="mt-3 flex items-center gap-1.5 text-xs text-slate-600 dark:text-slate-400 font-mono">
-                    <Calendar className="w-3.5 h-3.5" aria-hidden="true" />
-                    <span>Diterbitkan: {cert.issueDate}</span>
+                  <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-600 dark:text-slate-400 font-mono">
+                    <span className="inline-flex items-center gap-1.5">
+                      <Calendar className="w-3.5 h-3.5" aria-hidden="true" />
+                      <span>Diterbitkan: {cert.issueDate}</span>
+                    </span>
+                    {cert.learningHours && (
+                      <span className="inline-flex items-center gap-1">
+                        <Clock className="w-3.5 h-3.5" aria-hidden="true" />
+                        <span>{cert.learningHours}</span>
+                      </span>
+                    )}
                   </div>
 
                   <div className="mt-4 flex flex-wrap gap-1.5">
@@ -373,27 +394,44 @@ export default function Portfolio() {
                 </div>
 
                 <div className="mt-6 pt-4 border-t border-slate-200/80 dark:border-slate-700/70 flex flex-col gap-2.5">
-                  <a
-                    href={cert.verifyUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full min-h-[42px] px-4 rounded-2xl clay-btn-primary text-xs font-bold flex items-center justify-center gap-2 cursor-pointer"
-                  >
-                    <ShieldCheck className="w-4 h-4" aria-hidden="true" />
-                    <span>Verifikasi di Credly</span>
-                    <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
-                  </a>
+                  {cert.verifyUrl ? (
+                    <>
+                      <a
+                        href={cert.verifyUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full min-h-[42px] px-4 rounded-2xl clay-btn-primary text-xs font-bold flex items-center justify-center gap-2 cursor-pointer"
+                      >
+                        <ShieldCheck className="w-4 h-4" aria-hidden="true" />
+                        <span>Verifikasi di Credly</span>
+                        <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
+                      </a>
 
-                  {cert.pdfUrl && (
-                    <a
-                      href={cert.pdfUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full min-h-[40px] px-4 rounded-2xl clay-btn-secondary text-xs font-semibold flex items-center justify-center gap-2 cursor-pointer"
-                    >
-                      <FileText className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400" aria-hidden="true" />
-                      <span>Lihat Dokumen PDF Asli</span>
-                    </a>
+                      {cert.pdfUrl && (
+                        <a
+                          href={cert.pdfUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-full min-h-[40px] px-4 rounded-2xl clay-btn-secondary text-xs font-semibold flex items-center justify-center gap-2 cursor-pointer"
+                        >
+                          <FileText className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400" aria-hidden="true" />
+                          <span>Lihat Dokumen PDF Asli</span>
+                        </a>
+                      )}
+                    </>
+                  ) : (
+                    cert.pdfUrl && (
+                      <a
+                        href={cert.pdfUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full min-h-[42px] px-4 rounded-2xl clay-btn-primary text-xs font-bold flex items-center justify-center gap-2 cursor-pointer"
+                      >
+                        <FileText className="w-4 h-4" aria-hidden="true" />
+                        <span>Lihat Sertifikat PDF</span>
+                        <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
+                      </a>
+                    )
                   )}
                 </div>
               </article>

@@ -12,21 +12,42 @@ import {
   User,
   Code2,
   Trophy,
+  Github,
+  Linkedin,
+  Instagram,
+  Mail,
 } from "lucide-react";
 import {
   personalData,
   educationData,
   statsData,
 } from "../data/portfolioData";
+import { useToast } from "../context/ToastContext";
 
 export default function About() {
   const shouldReduceMotion = useReducedMotion();
+  const { toast } = useToast();
 
   const statIcons = {
     FolderCheck,
     GitCommit,
     Award,
     ShieldCheck,
+  };
+
+  const socialIcons = {
+    Github,
+    Linkedin,
+    Instagram,
+  };
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(personalData.email);
+      toast.success("Email Disalin", `${personalData.email} berhasil disalin ke clipboard.`);
+    } catch {
+      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
@@ -55,71 +76,122 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="lg:col-span-5 clay-card p-6 sm:p-8 flex flex-col items-center text-center relative overflow-hidden group"
+          className="lg:col-span-5 clay-card p-6 sm:p-8 flex flex-col justify-between items-center text-center relative overflow-hidden group"
         >
           <span className="specular-sweep" aria-hidden="true" />
 
-          {/* Avatar with Orbit Ring */}
-          <div className="relative mb-6">
-            <motion.div
-              animate={shouldReduceMotion ? undefined : { rotate: 360 }}
-              transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
-              className="absolute -inset-3 rounded-full border-2 border-dashed border-sky-400/50 dark:border-sky-400/35"
-              aria-hidden="true"
-            />
-            <div className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-full p-1.5 bg-gradient-to-tr from-sky-400 via-sky-500 to-cyan-400 shadow-[0_14px_30px_-6px_rgba(14,165,233,0.45)]">
-              <img
-                src={personalData.avatarUrl}
-                alt={personalData.name}
-                className="w-full h-full object-cover object-[center_18%] rounded-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
+          <div className="w-full flex flex-col items-center">
+            {/* Avatar with Orbit Ring */}
+            <div className="relative mt-1 mb-5">
+              <motion.div
+                animate={shouldReduceMotion ? undefined : { rotate: 360 }}
+                transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
+                className="absolute -inset-3 rounded-full border-2 border-dashed border-sky-400/50 dark:border-sky-400/35"
+                aria-hidden="true"
               />
+              <div className="relative w-36 h-36 sm:w-40 sm:h-40 rounded-full p-1.5 bg-gradient-to-tr from-sky-400 via-sky-500 to-cyan-400 shadow-[0_14px_30px_-6px_rgba(14,165,233,0.45)]">
+                <div className="w-full h-full rounded-full overflow-hidden ring-2 ring-white/90 dark:ring-slate-900/90">
+                  <img
+                    src={personalData.avatarUrl}
+                    alt={personalData.name}
+                    className="w-full h-full object-cover object-[50%_20%] scale-[1.15] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.21]"
+                  />
+                </div>
+              </div>
             </div>
 
-            <div className="clay-badge absolute -bottom-2.5 left-1/2 -translate-x-1/2 whitespace-nowrap px-3.5 py-1 text-[11px] flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-500" aria-hidden="true" />
-              <span className="text-emerald-700 dark:text-emerald-400">Available for Hire</span>
+            {/* Status Pill placed cleanly below orbit */}
+            <div className="clay-badge inline-flex items-center gap-2 px-3.5 py-1 text-[11px] font-mono mb-3">
+              <span className="relative flex h-2 w-2" aria-hidden="true">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+              </span>
+              <span className="text-emerald-700 dark:text-emerald-400 font-semibold">
+                Available for Hire
+              </span>
+            </div>
+
+            <h3 className="font-heading text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+              {personalData.name}
+            </h3>
+            <p className="text-xs sm:text-sm text-sky-600 dark:text-sky-400 font-mono font-semibold mt-1">
+              Junior Developer &amp; Tech Enthusiast
+            </p>
+
+            {/* Editorial Quote Callout */}
+            <blockquote className="mt-4 w-full rounded-2xl bg-sky-50/75 dark:bg-slate-800/55 border border-sky-100/90 dark:border-slate-700/70 px-4 py-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              &quot;Fokus saya adalah menciptakan pengalaman web yang tidak hanya indah secara visual, namun juga teruji secara performa, aksesibilitas, dan skalabilitas.&quot;
+            </blockquote>
+
+            {/* Structured Info Rows */}
+            <div className="w-full mt-5 space-y-2.5 text-left">
+              <div className="flex items-center justify-between gap-3 px-3.5 py-2.5 rounded-2xl bg-slate-50/90 dark:bg-slate-800/50 border border-slate-200/70 dark:border-slate-700/60">
+                <span className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-2 shrink-0">
+                  <span className="w-7 h-7 rounded-xl clay-icon-box flex items-center justify-center">
+                    <MapPin className="w-3.5 h-3.5" aria-hidden="true" />
+                  </span>
+                  <span>Domisili</span>
+                </span>
+                <span className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-100 text-right">
+                  {personalData.location}
+                </span>
+              </div>
+
+              <div className="flex items-center justify-between gap-3 px-3.5 py-2.5 rounded-2xl bg-slate-50/90 dark:bg-slate-800/50 border border-slate-200/70 dark:border-slate-700/60">
+                <span className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-2 shrink-0">
+                  <span className="w-7 h-7 rounded-xl clay-icon-box flex items-center justify-center">
+                    <GraduationCap className="w-3.5 h-3.5" aria-hidden="true" />
+                  </span>
+                  <span>Pendidikan</span>
+                </span>
+                <span className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-100 text-right">
+                  D3 Manajemen Informatika • Polinela
+                </span>
+              </div>
+
+              <div className="flex items-center justify-between gap-3 px-3.5 py-2.5 rounded-2xl bg-slate-50/90 dark:bg-slate-800/50 border border-slate-200/70 dark:border-slate-700/60">
+                <span className="text-xs text-slate-500 dark:text-slate-400 flex items-center gap-2 shrink-0">
+                  <span className="w-7 h-7 rounded-xl clay-icon-box flex items-center justify-center">
+                    <Code2 className="w-3.5 h-3.5" aria-hidden="true" />
+                  </span>
+                  <span>Minat Utama</span>
+                </span>
+                <span className="text-xs sm:text-sm font-semibold text-sky-700 dark:text-sky-300 text-right">
+                  Frontend, Fullstack, AI
+                </span>
+              </div>
             </div>
           </div>
 
-          <h3 className="font-heading text-2xl font-bold text-slate-900 dark:text-white mt-2">
-            {personalData.name}
-          </h3>
-          <p className="text-sm text-sky-600 dark:text-sky-400 font-mono font-semibold mt-1">
-            Junior Developer &amp; Tech Enthusiast
-          </p>
+          {/* Bottom Social & Direct Email Strip */}
+          <div className="w-full pt-5 mt-5 border-t border-slate-200/80 dark:border-slate-700/70 flex items-center justify-between gap-3">
+            <div className="flex items-center gap-2">
+              {personalData.socials.map((social) => {
+                const SocialIcon = socialIcons[social.icon] || Github;
+                return (
+                  <a
+                    key={social.name}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${social.name} ${personalData.shortName}`}
+                    title={social.name}
+                    className="w-10 h-10 rounded-2xl clay-btn-secondary flex items-center justify-center cursor-pointer"
+                  >
+                    <SocialIcon className="w-4 h-4" aria-hidden="true" />
+                  </a>
+                );
+              })}
+            </div>
 
-          <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mt-4 max-w-sm">
-            "Fokus saya adalah menciptakan pengalaman web yang tidak hanya indah secara visual, namun juga teruji secara performa, aksesibilitas, dan skalabilitas."
-          </p>
-
-          <div className="w-full pt-6 mt-6 border-t border-slate-200/80 dark:border-slate-700/70 flex flex-col gap-3 text-xs sm:text-sm">
-            <div className="flex items-center justify-between gap-2">
-              <span className="text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
-                <MapPin className="w-4 h-4 text-sky-600 dark:text-sky-400" aria-hidden="true" />
-                Domisili:
-              </span>
-              <span className="font-semibold text-slate-800 dark:text-slate-100">
-                Lampung, Indonesia
-              </span>
-            </div>
-            <div className="flex items-center justify-between gap-2">
-              <span className="text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
-                <GraduationCap className="w-4 h-4 text-sky-600 dark:text-sky-400" aria-hidden="true" />
-                Pendidikan:
-              </span>
-              <span className="font-semibold text-slate-800 dark:text-slate-100">
-                D3 Manajemen Informatika - Polinela
-              </span>
-            </div>
-            <div className="flex items-center justify-between gap-2">
-              <span className="text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
-                <Code2 className="w-4 h-4 text-sky-600 dark:text-sky-400" aria-hidden="true" />
-                Minat Utama:
-              </span>
-              <span className="font-semibold text-sky-700 dark:text-sky-300">
-                Frontend, Fullstack, AI
-              </span>
-            </div>
+            <button
+              type="button"
+              onClick={handleCopyEmail}
+              className="min-h-[40px] px-4 rounded-2xl clay-btn-primary text-xs font-bold inline-flex items-center gap-2 cursor-pointer"
+            >
+              <Mail className="w-3.5 h-3.5" aria-hidden="true" />
+              <span>Salin Email</span>
+            </button>
           </div>
         </motion.div>
 
