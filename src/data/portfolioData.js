@@ -130,7 +130,7 @@ export const statsData = [
     value: "1",
     label: "Project Completed",
     description: "AI Vault: Intelligent Vault & AI Asset Hub",
-    icon: "Rocket"
+    icon: "FolderCheck"
   },
   {
     value: "1.8K+",
@@ -223,7 +223,7 @@ export const techStackData = {
   ],
   stylingAnimation: [
     { name: "Tailwind CSS", level: 95, status: "Master", icon: "Palette", experience: "2+ Tahun" },
-    { name: "Framer Motion", level: 88, status: "Proficient", icon: "Sparkles", experience: "1.5 Tahun" },
+    { name: "Framer Motion", level: 88, status: "Proficient", icon: "Layers", experience: "1.5 Tahun" },
     { name: "CSS Modules & Sass", level: 82, status: "Proficient", icon: "Paintbrush", experience: "2 Tahun" },
     { name: "Three.js / WebGL Basics", level: 60, status: "Learning", icon: "Globe", experience: "6 Bulan" },
     { name: "Responsive & Glassmorphism", level: 92, status: "Advanced", icon: "Maximize", experience: "2+ Tahun" }

@@ -8,61 +8,49 @@ export default {
   theme: {
     extend: {
       colors: {
-        space: {
-          950: '#02040a',
-          900: '#050914',
-          850: '#090f24',
-          800: '#0d1636',
-          700: '#14224f',
+        skybrand: {
+          50: '#F0F9FF',
+          100: '#E0F2FE',
+          200: '#BAE6FD',
+          300: '#7DD3FC',
+          400: '#38BDF8',
+          500: '#0EA5E9',
+          600: '#0284C7',
+          700: '#0369A1',
         },
-        cosmic: {
-          blue: '#2c67ed',
-          light: '#5388ff',
-          cyan: '#00e5ff',
-          neon: '#38bdf8',
-          glow: 'rgba(44, 103, 237, 0.5)',
-          purple: '#7c3aed',
-        }
+        canvas: {
+          light: '#F0F5FA',
+          dark: '#090F1D',
+        },
       },
-      boxShadow: {
-        'glow-sm': '0 0 15px rgba(44, 103, 237, 0.4)',
-        'glow-md': '0 0 25px rgba(44, 103, 237, 0.55)',
-        'glow-lg': '0 0 45px rgba(44, 103, 237, 0.7)',
-        'glow-cyan': '0 0 25px rgba(0, 229, 255, 0.5)',
-        'navbar-glow': '0 10px 30px -5px rgba(44, 103, 237, 0.45), 0 0 15px rgba(44, 103, 237, 0.25)',
+      fontFamily: {
+        heading: ['Space Grotesk', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+        sans: ['Plus Jakarta Sans', 'system-ui', '-apple-system', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
+      },
+      transitionTimingFunction: {
+        'liquid': 'cubic-bezier(0.22, 1, 0.36, 1)',
       },
       animation: {
         'float-slow': 'float 6s ease-in-out infinite',
         'float-reverse': 'floatReverse 7s ease-in-out infinite',
-        'pulse-glow': 'pulseGlow 4s ease-in-out infinite',
-        'spin-slow': 'spin 20s linear infinite',
-        'spin-reverse': 'spinReverse 25s linear infinite',
-        'meteor': 'meteor 5s linear infinite',
+        'slide-up': 'slideUp 0.38s cubic-bezier(0.22, 1, 0.36, 1) both',
       },
       keyframes: {
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-14px)' },
+          '50%': { transform: 'translateY(-10px)' },
         },
         floatReverse: {
           '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(12px)' },
+          '50%': { transform: 'translateY(10px)' },
         },
-        pulseGlow: {
-          '0%, 100%': { opacity: '0.4', transform: 'scale(1)' },
-          '50%': { opacity: '0.8', transform: 'scale(1.05)' },
-        },
-        spinReverse: {
-          '0%': { transform: 'rotate(360deg)' },
-          '100%': { transform: 'rotate(0deg)' },
+        slideUp: {
+          from: { opacity: '0', transform: 'translateY(16px) scale(0.96)' },
+          to: { opacity: '1', transform: 'translateY(0) scale(1)' },
         },
       },
-      fontFamily: {
-        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
-        mono: ['Fira Code', 'monospace'],
-      }
     },
   },
   plugins: [],
-}
-
+};

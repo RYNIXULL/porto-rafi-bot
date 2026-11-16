@@ -1,37 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Sparkles, 
-  User, 
-  Briefcase, 
-  Mail, 
-  Home, 
-  Menu, 
-  X, 
-  Rocket, 
-  ExternalLink 
-} from 'lucide-react';
+import React, { useState, useEffect, useMemo } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, ArrowUpRight, Home, User, FolderGit2, Mail } from "lucide-react";
+import LiquidNavbar, { NimbusIcons } from "./LiquidNavbar";
+import { ThemeToggle, useTheme } from "../context/ThemeContext";
+import brandCodeIcon from "../assets/icons/File-Code-1--Streamline-Core.svg";
 
-const navItems = [
-  { name: 'Beranda', href: '#home', icon: Home },
-  { name: 'Tentang', href: '#about', icon: User },
-  { name: 'Portfolio', href: '#portfolio', icon: Briefcase },
-  { name: 'Kontak', href: '#contact', icon: Mail },
-];
+const SECTIONS = ["home", "about", "portfolio", "contact"];
 
 export default function Navbar() {
-  const [activeSection, setActiveSection] = useState('home');
+  const [activeSection, setActiveSection] = useState("home");
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 30);
-
-      const sections = ['home', 'about', 'portfolio', 'contact'];
-      const scrollPosition = window.scrollY + 200;
-
-      for (const sectionId of sections) {
+      setScrolled(window.scrollY > 24);
+      const scrollPosition = window.scrollY + 220;
+      for (const sectionId of SECTIONS) {
         const element = document.getElementById(sectionId);
         if (element) {
           const top = element.offsetTop;
@@ -44,163 +30,158 @@ export default function Navbar() {
       }
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") setMobileMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [mobileMenuOpen]);
+
+  const navItems = useMemo(
+    () => [
+      { label: "Beranda", href: "#home", icon: NimbusIcons.home, mobileIcon: Home, fx: "glow" },
+      { label: "Tentang", href: "#about", icon: NimbusIcons.user, mobileIcon: User, fx: "pop" },
+      { label: "Portfolio", href: "#portfolio", icon: NimbusIcons.layers, mobileIcon: FolderGit2, fx: "spin" },
+      { label: "Kontak", href: "#contact", icon: NimbusIcons.plane, mobileIcon: Mail, fx: "plane" },
+    ],
+    []
+  );
+
+  const activeIndex = Math.max(0, SECTIONS.indexOf(activeSection));
 
   const scrollToSection = (e, href) => {
     e.preventDefault();
     setMobileMenuOpen(false);
-    const targetId = href.replace('#', '');
+    const targetId = href.replace("#", "");
     const element = document.getElementById(targetId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
+      setActiveSection(targetId);
     }
   };
 
   return (
-    <>
-      {/* Floating Center Navbar */}
-      <header className="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-4xl">
-        <motion.nav
-          initial={{ y: -80, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className={`relative px-4 sm:px-6 py-2.5 rounded-full transition-all duration-300
-            ${scrolled 
-              ? 'bg-[#050914]/85 backdrop-blur-xl border border-[#2c67ed]/50 shadow-[0_0_30px_rgba(44,103,237,0.45)]' 
-              : 'bg-[#050914]/70 backdrop-blur-md border border-[#2c67ed]/30 shadow-[0_0_20px_rgba(44,103,237,0.3)]'
-            }
-          `}
+    <header className="fixed top-3 sm:top-4 left-0 right-0 z-50 px-3 sm:px-6 lg:px-5 xl:px-8 pointer-events-none">
+      <div className="max-w-7xl mx-auto">
+        <div
+          className={`pointer-events-auto clay-nav rounded-full px-3 sm:px-4 lg:px-5 py-2 flex items-center justify-between gap-2 sm:gap-3 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+            scrolled ? "shadow-lg" : ""
+          }`}
         >
-          {/* Subtle cosmic outer glow beam */}
-          <div className="absolute -inset-0.5 rounded-full bg-gradient-to-r from-transparent via-[#2c67ed]/40 to-transparent -z-10 blur-sm pointer-events-none" />
+          {/* Left: Brand Identity */}
+          <a
+            href="#home"
+            onClick={(e) => scrollToSection(e, "#home")}
+            className="shrink-0 flex items-center gap-2.5 group cursor-pointer rounded-full pr-1"
+          >
+            <div className="keep-light w-10 h-10 rounded-2xl bg-gradient-to-br from-sky-50 to-sky-100 border-2 border-white shadow-[0_6px_16px_-4px_rgba(14,165,233,0.28)] flex items-center justify-center transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105 group-hover:-rotate-3">
+              <img src={brandCodeIcon} alt="" className="w-5 h-5" aria-hidden="true" />
+            </div>
+            <div className="flex flex-col leading-none">
+              <span className="font-heading font-bold text-sm sm:text-base tracking-tight text-slate-800 dark:text-slate-100 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
+                RAFI<span className="text-sky-600 dark:text-sky-400">.DEV</span>
+              </span>
+              <span className="hidden sm:inline-block lg:hidden xl:inline-block text-[10px] font-mono tracking-wider text-slate-500 dark:text-slate-400 mt-0.5">
+                DEVELOPER PORTFOLIO
+              </span>
+            </div>
+          </a>
 
-          <div className="flex items-center justify-between">
-            {/* Logo / Brand */}
-            <a 
-              href="#home" 
-              onClick={(e) => scrollToSection(e, '#home')}
-              className="flex items-center gap-2.5 group cursor-pointer"
+          {/* Center: WebGL Waterline Liquid Navbar (Desktop >= 1024px) */}
+          <LiquidNavbar
+            items={navItems}
+            active={activeIndex}
+            onChange={(idx, item) => {
+              const id = item.href.replace("#", "");
+              setActiveSection(id);
+            }}
+            tone={theme === "dark" ? "dark" : "light"}
+            className="hidden lg:inline-flex shrink-0"
+          />
+
+          {/* Right: Theme Switcher, Primary CTA & Mobile Trigger */}
+          <div className="shrink-0 flex items-center gap-2">
+            <ThemeToggle compact />
+
+            <a
+              href="#contact"
+              onClick={(e) => scrollToSection(e, "#contact")}
+              className="hidden sm:inline-flex items-center gap-1.5 px-4 h-10 rounded-full clay-btn-primary text-xs font-bold whitespace-nowrap cursor-pointer"
             >
-              <div className="relative flex items-center justify-center w-9 h-9 rounded-full bg-gradient-to-br from-[#2c67ed] to-[#12255c] p-[1.5px] shadow-[0_0_12px_rgba(44,103,237,0.6)] group-hover:shadow-[0_0_20px_rgba(44,103,237,0.9)] transition-all">
-                <div className="w-full h-full rounded-full bg-space-950 flex items-center justify-center">
-                  <Rocket className="w-4 h-4 text-[#5388ff] group-hover:rotate-12 transition-transform duration-300" />
-                </div>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-bold text-sm tracking-wide text-white group-hover:text-[#5388ff] transition-colors">
-                  RAFI<span className="text-[#2c67ed]">.DEV</span>
-                </span>
-                <span className="text-[10px] text-blue-300/60 font-mono tracking-wider -mt-1 hidden sm:block">
-                  SECTOR 04 • ORBIT
-                </span>
-              </div>
+              <span>Hubungi Saya</span>
+              <ArrowUpRight className="w-3.5 h-3.5" aria-hidden="true" />
             </a>
 
-            {/* Desktop Navigation Links with animated indicator */}
-            <div className="hidden md:flex items-center gap-1 bg-[#02040a]/50 px-2 py-1.5 rounded-full border border-blue-500/15">
-              {navItems.map((item) => {
-                const isActive = activeSection === item.href.replace('#', '');
-                const Icon = item.icon;
-
-                return (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    onClick={(e) => scrollToSection(e, item.href)}
-                    className={`relative px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-200 flex items-center gap-1.5
-                      ${isActive ? 'text-white font-semibold' : 'text-slate-300/80 hover:text-white'}
-                    `}
-                  >
-                    {isActive && (
-                      <motion.div
-                        layoutId="activePill"
-                        className="absolute inset-0 rounded-full bg-[#2c67ed] shadow-[0_0_15px_rgba(44,103,237,0.7)]"
-                        transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-                      />
-                    )}
-                    <span className="relative z-10 flex items-center gap-1.5">
-                      <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-white' : 'text-slate-400'}`} />
-                      {item.name}
-                    </span>
-                  </a>
-                );
-              })}
-            </div>
-
-            {/* Action Buttons: Status Badge & CTA */}
-            <div className="hidden sm:flex items-center gap-3">
-              <a
-                href="#contact"
-                onClick={(e) => scrollToSection(e, '#contact')}
-                className="relative group overflow-hidden px-4 py-1.5 rounded-full text-xs font-semibold text-white bg-gradient-to-r from-[#2c67ed] to-[#1e4dc9] hover:from-[#3a75fa] hover:to-[#2c67ed] shadow-[0_0_15px_rgba(44,103,237,0.5)] transition-all duration-300 hover:scale-105 active:scale-95 flex items-center gap-1.5"
-              >
-                <Sparkles className="w-3.5 h-3.5 text-blue-200" />
-                <span>Let's Connect</span>
-              </a>
-            </div>
-
-            {/* Mobile Hamburger Button */}
-            <div className="md:hidden flex items-center gap-2">
-              <button
-                type="button"
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 rounded-full bg-space-900 border border-[#2c67ed]/40 text-blue-300 hover:text-white shadow-[0_0_10px_rgba(44,103,237,0.3)] focus:outline-none"
-                aria-label="Toggle Navigation Menu"
-              >
-                {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-              </button>
-            </div>
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen((prev) => !prev)}
+              aria-label={mobileMenuOpen ? "Tutup menu navigasi" : "Buka menu navigasi"}
+              aria-expanded={mobileMenuOpen}
+              className="lg:hidden w-11 h-11 rounded-full clay-btn-secondary flex items-center justify-center cursor-pointer"
+            >
+              {mobileMenuOpen ? (
+                <X className="w-5 h-5" aria-hidden="true" />
+              ) : (
+                <Menu className="w-5 h-5" aria-hidden="true" />
+              )}
+            </button>
           </div>
-        </motion.nav>
+        </div>
 
-        {/* Mobile Dropdown Menu with Space Styling */}
+        {/* Mobile Drawer Menu (< 1024px) */}
         <AnimatePresence>
           {mobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -20, scale: 0.95 }}
+            <motion.nav
+              aria-label="Navigasi Mobile"
+              initial={{ opacity: 0, y: -12, scale: 0.97 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -20, scale: 0.95 }}
-              transition={{ duration: 0.2 }}
-              className="mt-3 p-4 rounded-2xl bg-[#050914]/95 backdrop-blur-2xl border border-[#2c67ed]/40 shadow-[0_10px_35px_rgba(44,103,237,0.4)] md:hidden flex flex-col gap-2"
+              exit={{ opacity: 0, y: -12, scale: 0.97 }}
+              transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
+              className="pointer-events-auto lg:hidden mt-3 p-4 clay-card flex flex-col gap-1.5"
             >
               {navItems.map((item) => {
-                const isActive = activeSection === item.href.replace('#', '');
-                const Icon = item.icon;
+                const targetId = item.href.replace("#", "");
+                const isActive = activeSection === targetId;
+                const MobileIcon = item.mobileIcon;
                 return (
                   <a
-                    key={item.name}
+                    key={item.label}
                     href={item.href}
                     onClick={(e) => scrollToSection(e, item.href)}
-                    className={`flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm transition-all
-                      ${isActive 
-                        ? 'bg-[#2c67ed] text-white font-medium shadow-[0_0_15px_rgba(44,103,237,0.5)]' 
-                        : 'text-slate-300 hover:bg-space-850 hover:text-white'
-                      }
-                    `}
+                    aria-current={isActive ? "page" : undefined}
+                    className={`flex items-center gap-3 px-4 min-h-[44px] rounded-2xl text-sm font-semibold transition-all duration-200 cursor-pointer ${
+                      isActive
+                        ? "clay-btn-primary text-white"
+                        : "text-slate-700 dark:text-slate-200 hover:bg-sky-50 dark:hover:bg-slate-800/80"
+                    }`}
                   >
-                    <Icon className="w-4 h-4 text-blue-300" />
-                    <span>{item.name}</span>
+                    <MobileIcon className="w-4 h-4 shrink-0" aria-hidden="true" />
+                    <span>{item.label}</span>
                   </a>
                 );
               })}
 
-              <div className="pt-2 mt-1 border-t border-blue-900/40">
+              <div className="pt-2 mt-1 border-t border-slate-200/80 dark:border-slate-700/70 sm:hidden">
                 <a
                   href="#contact"
-                  onClick={(e) => scrollToSection(e, '#contact')}
-                  className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-gradient-to-r from-[#2c67ed] to-[#1d4ed8] text-white text-sm font-semibold shadow-[0_0_15px_rgba(44,103,237,0.4)]"
+                  onClick={(e) => scrollToSection(e, "#contact")}
+                  className="w-full min-h-[44px] flex items-center justify-center gap-2 rounded-2xl clay-btn-primary text-sm font-bold cursor-pointer"
                 >
-                  <Sparkles className="w-4 h-4 text-blue-200" />
-                  <span>Kirim Pesan / Kolaborasi</span>
+                  <span>Mulai Kolaborasi</span>
+                  <ArrowUpRight className="w-4 h-4" aria-hidden="true" />
                 </a>
               </div>
-            </motion.div>
+            </motion.nav>
           )}
         </AnimatePresence>
-      </header>
-    </>
+      </div>
+    </header>
   );
 }
-
