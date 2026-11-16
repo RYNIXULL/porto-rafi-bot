@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Printer, Mail, MapPin, GraduationCap, Briefcase, Award } from "lucide-react";
-import { personalData, educationData, experienceData, certificatesData } from "../data/portfolioData";
+import { X, Printer, Mail, MapPin, GraduationCap, Award } from "lucide-react";
+import { personalData, educationData, certificatesData } from "../data/portfolioData";
 import { useToast } from "../context/ToastContext";
 
 export default function ResumeModal({ isOpen, onClose }) {
@@ -94,42 +94,14 @@ export default function ResumeModal({ isOpen, onClose }) {
                 </span>
                 <span className="inline-flex items-center gap-1.5">
                   <MapPin className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400" aria-hidden="true" />
-                  Jakarta, Indonesia
+                  Lampung, Indonesia
                 </span>
               </div>
 
               <div>
                 <h4 className="flex items-center gap-2 font-heading font-bold text-slate-800 dark:text-slate-100 mb-3">
-                  <Briefcase className="w-4 h-4 text-sky-600 dark:text-sky-400" aria-hidden="true" />
-                  <span>Pengalaman Utama</span>
-                </h4>
-                <div className="space-y-3">
-                  {experienceData.map((exp) => (
-                    <div
-                      key={exp.role + exp.company}
-                      className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/70"
-                    >
-                      <div className="flex flex-wrap items-center justify-between gap-2">
-                        <p className="font-bold text-slate-800 dark:text-slate-100">{exp.role}</p>
-                        <span className="text-[11px] font-mono text-sky-700 dark:text-sky-300">
-                          {exp.period}
-                        </span>
-                      </div>
-                      <p className="text-xs font-medium text-sky-600 dark:text-sky-400 mt-0.5">
-                        {exp.company}
-                      </p>
-                      <p className="text-xs text-slate-600 dark:text-slate-300 mt-1.5 leading-relaxed">
-                        {exp.description}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <h4 className="flex items-center gap-2 font-heading font-bold text-slate-800 dark:text-slate-100 mb-3">
                   <GraduationCap className="w-4 h-4 text-sky-600 dark:text-sky-400" aria-hidden="true" />
-                  <span>Pendidikan</span>
+                  <span>Riwayat Pendidikan</span>
                 </h4>
                 <div className="space-y-2.5">
                   {educationData.map((edu) => (

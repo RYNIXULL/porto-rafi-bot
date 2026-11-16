@@ -9,6 +9,7 @@ import {
   Globe,
   ChevronDown,
   Layers,
+  Sparkles,
 } from "lucide-react";
 import { personalData, certificatesData, projectsData } from "../data/portfolioData";
 import ResumeModal from "./ResumeModal";
@@ -230,25 +231,35 @@ export default function Hero() {
               </div>
             </motion.div>
 
-            {/* Center Tactile Glass Core with Rafi's Photo */}
+            {/* Center Tactile Glass Core with Futuristic Developer Emblem */}
             <motion.div
-              whileHover={shouldReduceMotion ? undefined : { scale: 1.03 }}
+              whileHover={shouldReduceMotion ? undefined : { scale: 1.05 }}
               transition={{ duration: 0.3 }}
-              className="relative w-48 h-48 sm:w-56 sm:h-56 clay-card rounded-full p-2.5 flex items-center justify-center overflow-hidden shadow-2xl z-10 group"
+              className="relative w-48 h-48 sm:w-56 sm:h-56 clay-card rounded-full p-3 flex flex-col items-center justify-center overflow-hidden shadow-2xl z-10 group"
             >
               <span className="specular-sweep" aria-hidden="true" />
-              <div className="relative w-full h-full rounded-full overflow-hidden p-1 bg-gradient-to-tr from-sky-400 via-sky-500 to-cyan-400 shadow-[0_12px_28px_-6px_rgba(14,165,233,0.45)]">
-                <img
-                  src={personalData.avatarUrl}
-                  alt={personalData.name}
-                  className="w-full h-full object-cover object-[center_18%] rounded-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
-                />
-              </div>
 
-              {/* Status Badge floating at bottom of avatar */}
-              <div className="clay-badge absolute bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap px-3 py-1 text-[10px] font-mono flex items-center gap-1.5 shadow-md border border-white/80 dark:border-slate-700/80">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true" />
-                <span className="text-emerald-700 dark:text-emerald-300 font-semibold">Available for Work</span>
+              {/* Inner glowing cyber circle */}
+              <div className="relative w-full h-full rounded-full bg-gradient-to-br from-sky-50 via-white to-sky-100 dark:from-slate-900/95 dark:via-slate-800/95 dark:to-sky-950/70 border border-white/90 dark:border-sky-500/30 flex flex-col items-center justify-center p-4 text-center shadow-[inset_0_2px_12px_rgba(56,189,248,0.18)]">
+                {/* Futuristic Glowing Icon Badge */}
+                <div className="relative mb-2.5">
+                  <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-sky-500 via-cyan-400 to-blue-600 opacity-60 blur-md group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-tr from-white via-sky-50 to-white dark:from-slate-900 dark:via-slate-800 dark:to-sky-950 border border-sky-200 dark:border-sky-500/40 shadow-lg flex items-center justify-center">
+                    <Code2 className="w-7 h-7 sm:w-8 sm:h-8 text-sky-600 dark:text-sky-300 transition-transform duration-300 group-hover:scale-110" aria-hidden="true" />
+                    <Sparkles className="absolute -top-1 -right-1 w-4 h-4 text-amber-500 dark:text-amber-300 animate-pulse" aria-hidden="true" />
+                  </div>
+                </div>
+
+                <span className="text-xs sm:text-sm font-mono font-bold tracking-wider text-slate-800 dark:text-white uppercase flex items-center gap-1">
+                  <span className="text-sky-500 font-semibold">&lt;</span>
+                  RAFI.DEV
+                  <span className="text-sky-500 font-semibold">/&gt;</span>
+                </span>
+
+                <div className="mt-1.5 flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-[10px] font-mono font-medium text-emerald-600 dark:text-emerald-400">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <span>ONLINE • READY</span>
+                </div>
               </div>
             </motion.div>
 

@@ -7,10 +7,10 @@ export const personalData = {
     "Frontend Explorer",
     "Creative Problem Solver"
   ],
-  bio: "Seorang junior developer yang bersemangat menjelajahi jagat teknologi web modern. Memadukan estetika desain futuristik dengan kode yang bersih, responsif, dan berperforma tinggi. Siap meluncur bersama tantangan baru dan berkolaborasi dalam proyek inovatif.",
+  bio: "Mahasiswa Program Studi Manajemen Informatika di Politeknik Negeri Lampung sekaligus junior web developer yang bersemangat menjelajahi jagat teknologi web modern. Memadukan estetika desain futuristik dengan kode yang bersih, responsif, dan berperforma tinggi. Siap meluncur bersama tantangan baru dan berkolaborasi dalam proyek inovatif.",
   status: "Tersedia untuk Magang & Pekerjaan Full-time",
   email: "rafidiandra@example.com",
-  location: "Jakarta, Indonesia • Earth (Sector 04)",
+  location: "Lampung, Indonesia",
   resumeUrl: "#",
   avatarUrl: "/profile.jpg",
   socials: [
@@ -47,39 +47,26 @@ export const personalData = {
 
 export const educationData = [
   {
-    period: "2022 - Sekarang",
-    institution: "Universitas Bina Nusantara (BINUS)",
-    degree: "S1 Teknik Informatika (Computer Science)",
-    location: "Jakarta, Indonesia",
-    gpa: "IPK: 3.82 / 4.00",
-    description: "Fokus pada Rekayasa Perangkat Lunak, Struktur Data & Algoritma, Pengembangan Web Modern, dan Kecerdasan Buatan.",
+    period: "2024 - Sekarang",
+    institution: "Politeknik Negeri Lampung (POLINELA)",
+    degree: "D3 Manajemen Informatika",
+    location: "Bandar Lampung, Indonesia",
+    gpa: "Mahasiswa Aktif",
+    description: "Fokus pada pengembangan perangkat lunak, sistem informasi, basis data, arsitektur web modern, dan kecerdasan buatan (AI).",
     achievements: [
-      "Ketua Divisi Web Development Club Mahasiswa",
-      "Penerima Beasiswa Prestasi Akademik 2023 & 2024",
-      "Juara 2 National Hackathon Inter-University 2024"
+      "Aktif dalam eksplorasi pengembangan web modern (React, Tailwind CSS, TypeScript)",
+      "Penyelesaian sertifikasi resmi IBM SkillsBuild (Granite Code Optimization & Data Analysis)"
     ]
   },
   {
-    period: "2023 - 2024",
-    institution: "Bangkit Academy by Google, GoTo, Traveloka",
-    degree: "Cloud & Web Development Path",
-    location: "Online / Hybrid",
-    gpa: "Graduate with Distinction",
-    description: "Program intensif industri mempelajari arsitektur cloud, microservices, containerization, dan CI/CD pipeline modern.",
+    period: "2021 - 2024",
+    institution: "SMA Muhammadiyah Gisting",
+    degree: "Sekolah Menengah Atas (MIPA)",
+    location: "Gisting, Tanggamus, Lampung",
+    gpa: "Lulusan 2024",
+    description: "Menyelesaikan pendidikan menengah atas dengan minat mendalam pada bidang matematika, sains, dan komputasi dasar.",
     achievements: [
-      "Top 10% Capstone Project se-Indonesia",
-      "Sertifikasi Google Cloud Associate Cloud Engineer Prep"
-    ]
-  },
-  {
-    period: "2019 - 2022",
-    institution: "SMAN 1 Jakarta",
-    degree: "Jurusan MIPA (Matematika & IPA)",
-    location: "Jakarta, Indonesia",
-    gpa: "Nilai Rata-rata: 91.5",
-    description: "Aktif dalam Olimpiade Komputer dan ekstrakurikuler Robotika & Coding.",
-    achievements: [
-      "Medali Perunggu Olimpiade Sains Kota Bidang Informatika"
+      "Aktif dalam kegiatan akademik dan kepengurusan organisasi sekolah"
     ]
   }
 ];
