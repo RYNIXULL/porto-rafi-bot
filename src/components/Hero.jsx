@@ -11,10 +11,6 @@ import {
   Layers,
 } from "lucide-react";
 import { personalData, certificatesData, projectsData } from "../data/portfolioData";
-import wavingHandIcon from "../assets/icons/Waving-Hand--Streamline-Core.svg";
-import galaxyIcon from "../assets/icons/Galaxy-1--Streamline-Core.svg";
-import desktopCodeIcon from "../assets/icons/Desktop-Code--Streamline-Core.svg";
-import layersIcon from "../assets/icons/Layers-1--Streamline-Core.svg";
 import ResumeModal from "./ResumeModal";
 
 export default function Hero() {
@@ -206,20 +202,6 @@ export default function Hero() {
             {/* Subtle background ambient glow */}
             <div className="absolute w-64 h-64 rounded-full bg-sky-400/20 dark:bg-sky-500/15 blur-3xl -z-10 pointer-events-none" />
 
-            {/* Subtle Ambient Orbit Ring */}
-            <motion.div
-              animate={shouldReduceMotion ? undefined : { rotate: 360 }}
-              transition={{ duration: 42, repeat: Infinity, ease: "linear" }}
-              className="absolute -inset-4 rounded-full border border-dashed border-sky-300/40 dark:border-sky-500/20 pointer-events-none"
-            >
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-7 h-7 clay-icon-box flex items-center justify-center">
-                <Code2 className="w-3.5 h-3.5 text-sky-500" aria-hidden="true" />
-              </div>
-              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-7 h-7 clay-icon-box flex items-center justify-center">
-                <Terminal className="w-3.5 h-3.5 text-sky-500" aria-hidden="true" />
-              </div>
-            </motion.div>
-
             {/* Central Modern Developer Code Terminal */}
             <motion.div
               whileHover={shouldReduceMotion ? undefined : { y: -4, scale: 1.01 }}
@@ -248,7 +230,7 @@ export default function Hero() {
                 <div className="flex items-start gap-3">
                   <span className="text-slate-400/70 select-none text-right w-4 shrink-0">1</span>
                   <p className="text-slate-400 dark:text-slate-500 italic">
-                    // 🚀 Passionate Junior Web Developer
+                    // Passionate Junior Web Developer
                   </p>
                 </div>
 
@@ -318,11 +300,9 @@ export default function Hero() {
             <motion.div
               animate={shouldReduceMotion ? undefined : { y: [-5, 5, -5] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-3 -right-2 sm:-right-4 px-3.5 py-2.5 clay-card rounded-2xl flex items-center gap-2.5 shadow-lg z-20"
+              className="absolute -top-3 -right-2 sm:-right-4 px-3.5 py-2 clay-card rounded-2xl flex items-center gap-2.5 shadow-lg z-20"
             >
-              <div className="keep-light w-8 h-8 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center shrink-0">
-                <img src={galaxyIcon} alt="" className="w-4 h-4" aria-hidden="true" />
-              </div>
+              <span className="w-2 h-2 rounded-full bg-sky-500 shadow-[0_0_8px_rgba(14,165,233,0.8)]" />
               <div className="text-left">
                 <p className="text-xs font-bold text-slate-800 dark:text-slate-100 leading-tight">
                   Clean Architecture
@@ -337,11 +317,9 @@ export default function Hero() {
             <motion.div
               animate={shouldReduceMotion ? undefined : { y: [5, -5, 5] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-              className="absolute -bottom-3 -left-2 sm:-left-4 px-3.5 py-2.5 clay-card rounded-2xl flex items-center gap-2.5 shadow-lg z-20"
+              className="absolute -bottom-3 -left-2 sm:-left-4 px-3.5 py-2 clay-card rounded-2xl flex items-center gap-2.5 shadow-lg z-20"
             >
-              <div className="keep-light w-8 h-8 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center shrink-0">
-                <img src={layersIcon} alt="" className="w-4 h-4" aria-hidden="true" />
-              </div>
+              <span className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
               <div className="text-left">
                 <p className="text-xs font-bold text-slate-800 dark:text-slate-100 leading-tight">
                   React &amp; Tailwind
