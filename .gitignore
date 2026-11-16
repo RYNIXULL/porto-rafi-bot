@@ -17,6 +17,7 @@ coverage/
 .cache/
 .vite/
 .turbo/
+.vercel
 
 # Environment & Secrets
 .env
@@ -39,3 +40,5 @@ Thumbs.db
 *.njsproj
 *.sln
 *.sw?
+
+.vercel
